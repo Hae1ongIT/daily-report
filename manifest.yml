@@ -1,0 +1,33 @@
+# Slack 앱 생성용 매니페스트. api.slack.com/apps → Create New App → From a manifest
+display_information:
+  name: 일일보고
+  description: 일일보고를 받고 관리자에게 사내 LLM 요약을 보내는 봇
+features:
+  app_home:
+    home_tab_enabled: true
+    messages_tab_enabled: true
+    messages_tab_read_only_enabled: true
+  bot_user:
+    display_name: daily-report  # 사용자명으로 바뀌므로 영문(한글 불가). 앱 이름은 위 name
+    always_online: true
+oauth_config:
+  scopes:
+    bot:
+      - chat:write          # DM, 관리자 채널 요약
+      - im:write            # DM 열기
+      - users:read          # 대상자(봇·게스트 제외), 이름
+      - groups:read         # 관리자 비공개 채널 정보·멤버(관리자 판단)
+      - channels:read       # 관리자 채널을 공개 채널로 잘못 지정했는지 시작 시 확인
+      - lists:read          # 리스트 동기화(행 목록)
+      - lists:write         # 월별 리스트 생성·공유, 행 추가·수정·삭제
+settings:
+  event_subscriptions:
+    bot_events:
+      - app_home_opened
+      - member_joined_channel
+      - member_left_channel
+  interactivity:
+    is_enabled: true
+  org_deploy_enabled: false
+  socket_mode_enabled: true
+  token_rotation_enabled: false
