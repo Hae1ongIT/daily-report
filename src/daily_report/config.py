@@ -1,4 +1,4 @@
-"""`.env` 설정 로딩. 기본값은 SPEC.md 결정 사항을 따른다."""
+"""`.env` 설정 로딩. 비워 둔 선택 항목은 기본값을 쓴다."""
 
 import re
 from collections.abc import Mapping

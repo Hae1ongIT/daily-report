@@ -85,8 +85,8 @@ Wants=network-online.target
 
 [Service]
 User=dailyreport
-WorkingDirectory=/opt/daily-report
-ExecStart=/opt/daily-report/.venv/bin/python -m daily_report.app
+WorkingDirectory=/home/daily-report
+ExecStart=/home/daily-report/.venv/bin/python -m daily_report.app
 Restart=on-failure
 RestartSec=10
 # 설정 오류(종료 코드 78)는 다시 시작해도 소용없다
@@ -119,4 +119,4 @@ uv run ruff format --check
 
 ## 상태
 
-구현과 코드 리뷰 반영 완료, 실제 워크스페이스 시험 중.
+정식 운영 중.
